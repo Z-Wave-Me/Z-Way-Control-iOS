@@ -1,0 +1,35 @@
+<!-- Rooms view -->
+<div ng-controller="RoomController">
+     <bb-loader></bb-loader>
+     <div ng-if="rooms.show">
+     <h2 ng-bind="_t('nav_rooms')"></h2>
+     <div class="app-row app-row-report app-row-room clearfix" ng-controller="RoomConfigController">
+         <div id="row_{{v.id}}" class="report-entry" ng-repeat="v in rooms.all" ng-if="v.id !== 0">
+            <div class="report-col report-media">
+             <img class="report-img img-circle" ng-src="{{v.img_src}}" />
+           </div>
+            <div class="report-col report-body">
+                {{v.title|cutText:true:25}} <span class="item-cnt">({{rooms.cnt.devices[v.id]||0}})</span>
+            </div>
+         <div class="report-col report-ctrl">
+             <div class="btn-group">
+             <a class="btn btn-default" title="{{_t('lb_update')}}" href="#config-rooms/{{v.id}}">
+                 <i class="fa fa-pencil text-info"></i>
+             </a>
+                    <button class="btn btn-default" title="{{_t('lb_remove')}}" 
+                       ng-click="deleteRoom(v.id, _t('lb_delete_confirm'))"
+                       ><i class="fa fa-times text-danger"></i></button>
+              </div>
+         </div>
+        </div>
+      </div>
+     <div class="fieldset submit-entry">
+        <button type="button" class="btn btn-default" title="{{_t('lb_cancel')}}"  bb-go-back>
+            <i class="fa fa-reply"></i> <span class="btn-name">{{_t('lb_cancel')}}</span>
+        </button>
+          <a type="button" class="btn btn-submit" title="{{_t('lb_add_room')}}"  ng-href="#config-rooms/0">
+              <i class="fa fa-plus"></i> <span class="btn-name">{{_t('lb_add_room')}}</span>
+          </a>
+     </div>
+   </div>
+</div> <!-- /ng-controller --> 

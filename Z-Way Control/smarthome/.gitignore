@@ -1,0 +1,10 @@
+#.gitignore
+/_project/*
+/nbproject/*
+/upload/*
+/app/core/config.js
+upload.php
+.sass-cache*
+/app/css/.sass-cache/*
+/node_modules/*
+npm-debug.log
